@@ -1,31 +1,55 @@
-function getChoice(choice)
-{
-    // setup the choices array
-    let choices = [ "Rock", "Paper", "Scissors" ];
-
-    // return the relevant choice
-    return choices[choice];
-}
-
 function getComputerChoice()
 {
     // get a random number between 0 and 2
     let randomChoice = Math.floor(Math.random() * 3);
+
+    // setup the choices array
+    let choices = [ "rock", "paper", "scissors" ];
     
-    return getChoice(randomChoice);
+    // return the relevant choice
+    return choices[randomChoice];
 }
 
 function getHumanChoice()
 {
-    // get the player choice and subtract 1 to get to a choice index
-    let choice = prompt("Choose Rock (1), Paper (2) or Scissors (3): ") - 1;
+    // get the player choice
+    return prompt("Choose Rock, Paper or Scissors: ").toLowerCase();
+}
 
-    return getChoice(choice);
+function playRound(humanChoice, computerChoice)
+{
+    if(humanChoice == "rock" && computerChoice == "scissors" ||
+       humanChoice == "paper" && computerChoice == "rock" || 
+       humanChoice == "scissors" && computerChoice == "paper")
+    {
+        humanScore++;
+        console.log("You win! " + humanChoice.toUpperCase() + " beats " + computerChoice.toUpperCase());
+    }
+    else if(computerChoice == "rock" && humanChoice == "scissors" ||
+       computerChoice == "paper" && humanChoice == "rock" || 
+       computerChoice == "scissors" && humanChoice == "paper")
+    {
+        computerScore++;
+        console.log("You lose! " + computerChoice.toUpperCase() + " beats " + humanChoice.toUpperCase());
+    }
+    else
+    {
+        console.log("Draw!");
+    }
+
+    console.log(humanScore);
+    console.log(computerScore);
 }
 
 // score variables
-let humanScore = 0;
-let computerScore = 0;
+humanScore = 0;
+computerScore = 0;
 
-console.log(getHumanChoice());
-console.log(getComputerChoice());
+// player choices
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+console.log(humanSelection);
+console.log(computerSelection);
+
+playRound(humanSelection, computerSelection);
