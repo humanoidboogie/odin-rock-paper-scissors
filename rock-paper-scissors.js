@@ -36,20 +36,38 @@ function playRound(humanChoice, computerChoice)
     {
         console.log("Draw!");
     }
-
-    console.log(humanScore);
-    console.log(computerScore);
 }
 
-// score variables
-humanScore = 0;
-computerScore = 0;
+function playGame()
+{
+    let rounds = 5;
 
-// player choices
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+    // score variables
+    humanScore = 0;
+    computerScore = 0;
 
-console.log(humanSelection);
-console.log(computerSelection);
+    for(let i = 0; i < rounds; i++)
+    {
+        // player choices
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+        playRound(humanSelection, computerSelection);
+    }
+
+    // declare winner
+    if(humanScore > computerScore)
+    {
+        console.log("You win! (" + humanScore + "-" + computerScore + ")");
+    }
+    else if(humanScore < computerScore)
+    {
+        console.log("You lose! (" + humanScore + "-" + computerScore + ")");
+    }
+    else
+    {
+        console.log("It's a draw! (" + humanScore + "-" + computerScore + ")");
+    }
+}
+
+playGame();
