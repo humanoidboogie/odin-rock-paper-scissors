@@ -23,5 +23,9 @@ function getHumanChoice()
     return getChoice(choice);
 }
 
+// score variables
+let humanScore = 0;
+let computerScore = 0;
+
 console.log(getHumanChoice());
 console.log(getComputerChoice());
