@@ -32,7 +32,7 @@ function playRound(humanChoice, computerChoice)
        humanChoice == PAPER && computerChoice == ROCK || 
        humanChoice == SCISSORS && computerChoice == PAPER)
     {
-        humanScore++;
+        //humanScore++;
         console.log(`You win! ${humanChoiceName} beats ${computerChoiceName}`);
     }
     // check lose conditions
@@ -40,7 +40,7 @@ function playRound(humanChoice, computerChoice)
             computerChoice == PAPER && humanChoice == ROCK || 
             computerChoice == SCISSORS && humanChoice == PAPER)
     {
-        computerScore++;
+        //computerScore++;
         console.log(`You lose! ${computerChoiceName} beats ${humanChoiceName}`);
     }
     // otherwise, it's a draw
@@ -82,4 +82,19 @@ function playGame()
     }
 }
 
-playGame();
+// grab all the buttons
+const buttons = document.querySelectorAll("button");
+
+// add click listener to buttons
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+
+        const humanSelection = parseInt(e.target.id);
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+
+    })
+});
+
+//playGame();
